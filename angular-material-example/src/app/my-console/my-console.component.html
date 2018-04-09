@@ -1,3 +1,4 @@
-<p>
-  my-console works!
-</p>
+<mat-card>
+  <mat-card-title>Console</mat-card-title>
+  <div *ngFor='let message of myConsoleService.messages'> {{message}} </div>
+</mat-card>
