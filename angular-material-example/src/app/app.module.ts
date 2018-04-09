@@ -7,12 +7,15 @@ import { MatCardModule, MatButtonModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { MyCardComponent } from './my-card/my-card.component';
+import { MyConsoleService } from './my-console.service';
+import { MyConsoleComponent } from './my-console/my-console.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyCardComponent
+    MyCardComponent,
+    MyConsoleComponent
   ],
   imports: [
     BrowserModule
@@ -21,7 +24,7 @@ import { MyCardComponent } from './my-card/my-card.component';
     MatCardModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [MyConsoleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
