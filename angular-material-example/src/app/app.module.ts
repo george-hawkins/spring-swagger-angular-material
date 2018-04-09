@@ -18,7 +18,7 @@ import { MyConsoleComponent } from './my-console/my-console.component';
     MyConsoleComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     MatCardModule,
