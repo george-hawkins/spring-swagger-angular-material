@@ -9,13 +9,17 @@ import { AppComponent } from './app.component';
 import { MyCardComponent } from './my-card/my-card.component';
 import { MyConsoleService } from './my-console.service';
 import { MyConsoleComponent } from './my-console/my-console.component';
+import { MyDialogComponent } from './my-dialog/my-dialog.component';
+import { MyDialogOpenerComponent } from './my-dialog-opener/my-dialog-opener.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MyCardComponent,
-    MyConsoleComponent
+    MyConsoleComponent,
+    MyDialogComponent,
+    MyDialogOpenerComponent
   ],
   imports: [
     BrowserModule,
