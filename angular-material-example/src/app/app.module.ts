@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatCardModule, MatButtonModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -21,12 +21,16 @@ import { MyDialogOpenerComponent } from './my-dialog-opener/my-dialog-opener.com
     MyDialogComponent,
     MyDialogOpenerComponent
   ],
+  entryComponents: [MyDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [MyConsoleService],
   bootstrap: [AppComponent]
