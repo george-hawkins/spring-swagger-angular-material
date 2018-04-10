@@ -11,6 +11,9 @@ import { MyConsoleService } from './my-console.service';
 import { MyConsoleComponent } from './my-console/my-console.component';
 import { MyDialogComponent } from './my-dialog/my-dialog.component';
 import { MyDialogOpenerComponent } from './my-dialog-opener/my-dialog-opener.component';
+import { ApiModule } from './api';
+
+import { BASE_PATH } from './api/variables';
 
 
 @NgModule({
@@ -30,9 +33,16 @@ import { MyDialogOpenerComponent } from './my-dialog-opener/my-dialog-opener.com
     MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ApiModule
   ],
-  providers: [MyConsoleService],
+  providers: [
+    MyConsoleService, 
+    {
+      provide: BASE_PATH,
+      useValue: 'http://localhost:8080'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
