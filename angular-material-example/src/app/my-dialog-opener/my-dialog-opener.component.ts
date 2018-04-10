@@ -5,6 +5,8 @@ import { MyDialogComponent } from '../my-dialog/my-dialog.component';
 import { MyConsoleService } from '../my-console.service';
 import { GreetingControllerService, Greeting } from '../api';
 
+import { tap, finalize } from 'rxjs/operators';
+
 @Component({
   selector: 'app-my-dialog-opener',
   templateUrl: './my-dialog-opener.component.html',
@@ -33,8 +35,16 @@ export class MyDialogOpenerComponent implements OnInit {
   }
 
   queryGreeting(): void {
-    this.greetingControllerService.greetingUsingGET("John Doe")
-      .subscribe(body => this.processGreeting(body));
+    const obs$ = this.greetingControllerService.greetingUsingGET('John Doe')
+      .pipe(
+        tap(_0 => this.myConsoleService.add('Retrieved greeting.')),
+        finalize(() => this.myConsoleService.add('Finalized retrieving greeting.'))
+      );
+
+      obs$.subscribe(
+        body => this.processGreeting(body),
+        err => this.myConsoleService.add(`Error ${JSON.stringify(err)}`)
+      );
   }
 
   processGreeting(greeting: Greeting): void {
