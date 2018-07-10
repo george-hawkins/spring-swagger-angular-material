@@ -48,6 +48,23 @@ Rerun the fix - it turns out npm can't automatically fix any of the issues - it'
 
     $ npm audit fix
 
+Updating Swagger wrappers
+-------------------------
+
+If you've cloned a new copy of this repo or want to update the wrappers, first find the latest version of swagger-codegen-cli at <https://search.maven.org>, then:
+
+    $ cd ..
+    $ wget http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.3.1/swagger-codegen-cli-2.3.1.jar -O swagger-codegen-cli.jar
+    $ java -jar swagger-codegen-cli.jar generate -i http://localhost:8080/v2/api-docs -l typescript-angular -o angular-material-example/src/app/api
+
+The 2.3.1 CLI still generates wrappers that are slightly incompatible with the latest version of RxJS - presumably this will be fixed in version 3 that will soon be out.
+
+In the meantime the issue can be fixed with the help of <https://update.angular.io/> - basically it boiled down to:
+
+    $ rxjs-5-to-6-migrate -p src/tsconfig.app.json
+
+This just changed `import { Observable } from 'rxjs/Observable';` to `import { Observable } from 'rxjs';` in the wrapper files.
+
 ---
 
 Remember there are more npm etc. notes in ~/git/notes/NOTES.md
